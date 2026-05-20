@@ -6,7 +6,12 @@ import {
   spring,
 } from "remotion";
 
-export const Hook: React.FC = () => {
+interface HookProps {
+  line1: string;
+  line2: string;
+}
+
+export const Hook: React.FC<HookProps> = ({ line1, line2 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
@@ -112,7 +117,7 @@ export const Hook: React.FC = () => {
               letterSpacing: -1,
             }}
           >
-            לפני שאתה משקיע ביוון
+            {line1}
           </div>
         </div>
 
@@ -139,7 +144,7 @@ export const Hook: React.FC = () => {
               letterSpacing: -0.5,
             }}
           >
-            5 הטעויות שחייבים לדעת
+            {line2}
           </div>
         </div>
 

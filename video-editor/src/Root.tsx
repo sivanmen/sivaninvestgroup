@@ -1,18 +1,24 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { GreeceInvestmentVideo } from "./Composition";
+import { GreeceInvestmentVideo, type VideoProps } from "./Composition";
 
 export const RemotionRoot: React.FC = () => {
   return (
-    <>
-      <Composition
-        id="GreeceInvestment"
-        component={GreeceInvestmentVideo}
-        durationInFrames={2460}
-        fps={30}
-        width={1080}
-        height={1920}
-      />
-    </>
+    <Composition
+      id="SivanInvestVideo"
+      component={GreeceInvestmentVideo}
+      fps={30}
+      width={1080}
+      height={1920}
+      defaultProps={{
+        hookLine1: "לפני שאתה משקיע ביוון",
+        hookLine2: "5 הטעויות שחייבים לדעת",
+        showEndCard: false,
+        durationInFrames: 2460,
+      } satisfies VideoProps}
+      calculateMetadata={async ({ props }) => ({
+        durationInFrames: props.durationInFrames,
+      })}
+    />
   );
 };
